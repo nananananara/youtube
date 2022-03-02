@@ -1,0 +1,47 @@
+*{box-sizing: border-box; line-height:1.3;}
+article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary {display: block;}
+html, body, div,  p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ol, ul, li, blockquote, pre, button, fieldset, form, legend,table, caption, tbody, tfoot, thead, tr, th, td, iframe, article, aside, canvas, details, embed, textarea, figure, figcaption, header, footer, main, menu, nav, section, summary, audio, video, template {margin: 0;padding: 0;border: 0;font-size: inherit;font-family: inherit;vertical-align: baseline;box-sizing: border-box;word-break: keep-all;}
+a,a:active,a:hover,a:link,a:visited{text-decoration:none}
+ul, ul>li,ol, ol>li{list-style:none;}
+
+$darkcolor : #222;
+
+html {font-size:10px;}
+#header {height:100px; border-bottom:1px solid #000;}
+.layout {width:100%; max-width:124rem; margin:0 auto;}
+.video {
+    padding:2rem;
+    ul {display:flex; flex-wrap:wrap; margin:0 -1rem;}
+    li {width:calc(16.66% - 2rem); margin:0 1rem 2rem;}
+    img {width:100%;}
+    .info {height:124px;padding:1rem 1rem 0;}
+    strong {display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;max-height:47px;font-size:1.8rem;text-overflow: ellipsis;white-space: normal;}
+    p {opacity:.8;margin:.5rem 0 0; font-size:1.4rem;}
+    p span {display:inline-block; }
+    p span:last-child::before {display:inline-block;opacity:.8; width:3px; height:3px; margin:-0.3rem .8rem 0; border-radius:50%; background:$darkcolor;content:''; vertical-align:middle;}
+}
+
+.detail { display:flex; flex-wrap: wrap; padding:2rem 0;
+    .detail-left {width:calc(100% - 40rem); padding-right:4rem;
+        iframe {width:100%; height:48rem;}
+        .info { padding:2rem 0; border-bottom:1px solid #ddd; 
+            strong {display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;max-height:47px; margin:0 0 2rem; font-size:1.8rem;text-overflow: ellipsis;white-space: normal;}
+            p {opacity:.8;margin:.5rem 0 0; font-size:1.5rem;}
+            p span {display:inline-block; }
+            p span:last-child::before {display:inline-block;opacity:.8; width:3px; height:3px; margin:-0.3rem .8rem 0; border-radius:50%; background:$darkcolor;content:''; vertical-align:middle;}
+        
+        }
+        .channel { position:relative; padding:2rem 0 2rem 7rem;  
+            .thumb {overflow:hidden; position:absolute; left:0; top:2rem; width:5rem; height:5rem; border-radius:50%;}
+            .thumb img {width:100%;}
+            strong {display:block; margin:1rem 0 2rem; font-size:1.5rem;}
+            .content.more {overflow:hidden;height:6rem; }
+            .content.moreActive {height:auto;}
+            pre {font-size:1.5rem;}
+            button {opacity:0.5; margin:2rem 0 0; background:none; font-size:1.5rem; cursor: pointer;}
+
+        }
+    }
+    
+    .detail-right {width:40rem; background:red;}
+}
