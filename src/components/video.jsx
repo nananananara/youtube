@@ -21,6 +21,7 @@ function Video(props) {
                         <li key={typeof item.id === 'string' ? item.id : item.id.videoId}>  
                             <Link to={"/detail/"+videoId()+"/"+item.snippet.channelId}>
                                 <div className="thumb">
+                                    <span><i className="xi-play"></i> 재생</span>
                                     <img src={item.snippet.thumbnails.medium.url} alt={item.snippet.title+"썸네일 이미지"} />
                                 </div>
                                 <div className="info">

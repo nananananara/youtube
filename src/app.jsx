@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Route,Link,Switch,useLocation  } from 'react-router-dom';
 import Header from './components/header';
 import Video from './components/video';
@@ -8,9 +8,10 @@ import './css/app.scss';
 
 
 
-function App() {
-  const API = "AIzaSyBRS4Yxw6TEFXEsSOweTU3NeKuJcl9mgh0";
+function App(props) {
+  const API = process.env.REACT_APP_YOUTUBE_API_KEY;
   const [video,setVideo] = useState([]);
+  const [mode,setMode] = useState('light');
   const axiosData = async (api,setState)=> {
     await axios.get(api)
       .then((result)=>{
@@ -23,9 +24,8 @@ function App() {
   };
 
   const search = async (keword) => {
-      const api = `https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=30&q=${keword}&type=video&key=${API}`;
-      axiosData(api,setVideo);
-
+    const api = `https://www.googleapis.com/youtube/v3/search/?part=snippet&maxResults=30&q=${keword}&type=video&key=${API}`;
+    axiosData(api,setVideo);
   };
 
   useEffect(()=>{
@@ -57,9 +57,9 @@ function App() {
   }
 
   return (
-   <>
-    
-    <Header onSearch={search} />
+   <div className={"App "+(mode === 'light' ? 'light' : 'dark')}>
+  
+    <Header onSearch={search} setMode={setMode} />
     
     <Switch>
       <Route path="/" exact>
@@ -72,12 +72,12 @@ function App() {
       </Route>
 
       <Route path="/detail/:param/:chParam">
-        <Detail />
+        <Detail timeForToday={timeForToday} />
       </Route>
 
     </Switch>
  
-   </>
+   </div>
   );
 }
 
