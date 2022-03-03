@@ -59,7 +59,7 @@ function App(props) {
   return (
    <div className={"App "+(mode === 'light' ? 'light' : 'dark')}>
   
-    <Header onSearch={search} setMode={setMode} />
+    <Header onSearch={search} mode={mode} setMode={setMode} />
     
     <Switch>
       <Route path="/" exact>

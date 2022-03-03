@@ -18,6 +18,7 @@ html {font-size:10px;}
 i {margin-top:.4rem;}
 .App.light {background:$lightcolor;}
 .App.dark {background:#191919;}
+.layout {width:100%; max-width:140rem; margin:0 auto;}
 
 #header {display:flex; justify-content:space-between ; height:7rem;  border-bottom:$bordercolor;
     .leftUtil {display:flex; height: 100%; align-items:center;}
@@ -26,9 +27,13 @@ i {margin-top:.4rem;}
     .logo {display:inline-block;width:10rem;}
     .logo a {display:block; width:100%;}
 
-    .search {position:relative; align-self:center; width:60rem; height:4rem; border:$bordercolor; 
-        input {width:calc(100% - 4rem);height: 100%; border:none; padding:0 2rem; background: transparent; font-size:1.5rem; color:$darkcolor;}
-        button {position:absolute; right:0; top:0; width:4rem; height:100%; background:#fff; font-size:2rem; cursor:pointer;}
+    .search {position:relative; align-self:center; width:60rem; height:4rem;  
+        .openBtn {display:none; }
+        .inner {width:100%; height:100%;}
+        .form {position:relative; width:100%; height:100%; border:$bordercolor; }
+        .closeBtn {display:none;}
+        input {width:calc(100% - 4rem);height: 100%; padding:0 2rem; border:none; background: transparent; font-size:1.5rem; color:$darkcolor;}
+        .searchBtn {position:absolute; right:0; top:0; width:4rem; height:100%; background:#fff; font-size:2rem; cursor:pointer;}
     }
 
     .righttUtil {align-self:center; padding-right:2rem;
@@ -52,9 +57,10 @@ i {margin-top:.4rem;}
 .App.dark #header { border-bottom:$bordercolor2;
     .menu,
     .menu button {color:$lightcolor;}
-    .search { border:$bordercolor2; 
+    .search {  
+        .form {border:$bordercolor2;}
         input {color:$lightcolor;}
-        button {background:rgba(255,255,255,.1); color:$lightcolor;}
+        .searchBtn {background:rgba(255,255,255,.1); color:$lightcolor;}
     }
     #youtube-paths path {fill:$lightcolor;}
     .righttUtil {
@@ -69,7 +75,7 @@ i {margin-top:.4rem;}
         svg path {fill:$lightcolor; }
     }
 }
-.layout {width:100%; max-width:140rem; margin:0 auto;}
+
 .video {
     padding:2rem 2rem 2rem 9rem; 
     ul {display:flex; flex-wrap:wrap; margin:0 -1rem;}
@@ -83,7 +89,7 @@ i {margin-top:.4rem;}
     li a:focus .thumb:before,
     li a:hover .thumb span,
     li a:focus .thumb span {opacity: 1;}
-    .info {height:124px;padding:1rem 1rem 0;}
+    .info {height:12.4rem;padding:1rem 1rem 0;}
     strong {display: block;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;max-height:47px;font-size:1.8rem;text-overflow: ellipsis;white-space: normal;}
     p {opacity:.8;margin:.5rem 0 0; font-size:1.4rem;}
     p span {display:inline-block; }
@@ -124,10 +130,12 @@ i {margin-top:.4rem;}
     .content.more {overflow:hidden;max-height:6rem; }
     .content.moreActive {height:auto;}
     pre {font-size:1.5rem;white-space: pre-wrap; }
-    button {opacity:0.5; margin:$basicSpace 0; background:none; font-size:1.5rem; cursor: pointer;}
+    button {opacity:0.5; margin:$basicSpace 0; background:none; font-size:1.5rem; cursor: pointer; color:$darkcolor;}
 
 }
-.App.dark .channel {border-bottom:$bordercolor2; }
+.App.dark .channel {border-bottom:$bordercolor2; 
+    button {color:$lightcolor;}
+}
 
 .comment { padding:$basicSpace;
     .tit {margin:0 0 2rem; font-weight:bold; font-size:1.5rem;}
@@ -166,4 +174,121 @@ i {margin-top:.4rem;}
 }
 .App.dark .btn { border-top:$bordercolor2;
     a {color:$lightcolor;}
+}
+
+@media(max-width:1579px){
+    .layout {padding:2rem;}
+    #header {
+        .fixmenu {display:none;}
+    }
+    .detail {
+        .detail-left {width:calc(100% - 35rem); padding-right:3rem;}
+        
+        .detail-right {width:35rem;}
+    }
+    .video {padding:2rem;
+        li {width:calc(20% - 2rem);}
+        .info {height:10rem;}
+    }
+}
+
+@media(max-width:1199px){
+    
+    .detail {
+        .detail-left {
+            iframe {height:40rem;}
+        }
+    }
+
+    .video {
+        li {width:calc(25% - 2rem);}
+    }
+    
+
+}
+
+@media(max-width:1023px){
+    #header {
+        .search {width:calc(100% - 40rem);}
+    }
+    .detail {
+        .detail-left {width:100%; padding:0;}
+        .detail-right {width:100%; padding:2rem 0 0; border-top:$bordercolor; }
+    }
+
+    .App.dark .detail {
+        .detail-right {border-top:$bordercolor2; }
+    }
+
+    .videoList {
+        .thumb {width:20rem;}
+        .info {width:calc(100% - 20rem);}
+    }
+
+    .video {
+        li {width:calc(33.33% - 2rem);}
+    }
+}
+
+@media(max-width:767px){
+    #header {
+        .righttUtil {
+            button {width:4rem; height:4rem; padding:0; border-radius:50%; font-size:0; text-align:center;}
+            button i {margin:0; line-height:3rem; font-size:1.8rem;}
+        }
+        .search {width:calc(100% - 30rem);}
+    }
+
+    .detail {
+        .detail-left {
+            iframe {height:35rem;}
+        }
+    }
+
+    .videoList {
+        .thumb {width:15rem;}
+        .info {width:calc(100% - 15rem);}
+    }
+
+    .video {
+        li {width:calc(50% - 2rem);}
+        strong {font-size:1.6rem;}
+    }
+}
+
+@media(max-width:640px){
+    #header{
+        .search { position:absolute; right:7rem; top:1.5rem; width:auto;
+            .openBtn {display:block; width:4rem; height:4rem; border:$bordercolor; border-radius:50%; background:transparent; font-size:1.8rem; transition:all 0.3s; -webkit-transition:all 0.3s;}
+            .openBtn:hover,.openBtn:focus {background:#eee;}
+            .inner {display:none;}
+            .inner .closeBtn {display:block; position:absolute; right:2rem; top:2rem; background:none; font-size:4rem; color:#fff;}
+            .form {position:relative; top:30%; width:100%; height:6rem; padding:0 2rem; border:none;}
+            input {width:100%; padding-right:6rem; border:2px solid #fff; color:#fff; font-size:1.8rem;}
+            .searchBtn {right:2rem; top:0; width:6rem; height:6rem;font-size:2.8rem;}
+        }
+
+        .search.open {
+            .inner {display:block; position:fixed; left:0; top:0; z-index:10; width:100vw; height:100vh; background:rgba(0,0,0,.9);}
+        }
+    }
+
+    .App.dark #header {
+        .search {
+            .openBtn {border:$bordercolor2; color:$lightcolor;}
+            .openBtn:hover,.openBtn:focus {background:rgba(255,255,255,.1);}
+            .searchBtn {background:none;}
+        }
+    }
+}
+
+@media(max-width:450px){
+    .detail {
+        .detail-left {
+            iframe {height:25rem;}
+        }
+    }
+    .video {
+        li {width:calc(100% - 2rem);}
+    }
 }
