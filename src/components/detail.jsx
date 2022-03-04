@@ -87,7 +87,12 @@ function Detail(props) {
             :
             <>
             <div className='detail-left'>
-                <iframe src={`https://www.youtube.com/embed/${view[0].id}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <iframe 
+                    src={`https://www.youtube.com/embed/${view[0].id}`} 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                ></iframe>
                 <div className="info">
                     <strong>{view[0].snippet.title}</strong>
                     <p>

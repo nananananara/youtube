@@ -4,8 +4,6 @@ import { Link,useLocation  } from 'react-router-dom';
 function Video(props) {
   return (
     <div className='video'>
-        
-        
         <ul>
             {
                 props.video.map((item,i)=>{

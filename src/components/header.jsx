@@ -1,24 +1,25 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link ,useHistory } from 'react-router-dom';
 
 function Header(props) {
+    const history = useHistory();
     const inputRef = useRef();
+    const [searchBtn, setSearchBtn] = useState("close");
     const handleSearch = ()=> {
         const value = inputRef.current.value;
         props.onSearch(value);
         inputRef.current.value='';
     }
     const onClick = () =>{
+        history.push("/");
         handleSearch();
     }
     const onKeyPress = (event) => {
         if(event.key === 'Enter'){
+            history.push("/");
             handleSearch();
         }
     }
-    let history = useHistory();
-    const [searchBtn, setSearchBtn] = useState("close")
     
   return (
     <header id="header">
@@ -37,8 +38,8 @@ function Header(props) {
             <button type="button" className='openBtn' onClick={()=>{setSearchBtn('open')}}><i className="xi-search"></i></button>
             <div className="inner">
                 <div className="form">
-                    <input type="text" type="search" placeholder="검색" onKeyPress={history.push("/"),onKeyPress} ref={inputRef} />
-                    <button type="submit" className='searchBtn' onClick={history.push("/"),onClick}><i className="xi-search"></i></button>
+                    <input type="text" type="search" placeholder="검색" onKeyPress={onKeyPress} ref={inputRef} />
+                    <button type="submit" className='searchBtn' onClick={onClick}><i className="xi-search"></i></button>
                 </div>
                 <button type="button" className='closeBtn' onClick={()=>{setSearchBtn('close')}}><i className="xi-close"></i></button>
                 

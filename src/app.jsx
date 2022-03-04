@@ -1,12 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Route,Link,Switch,useLocation  } from 'react-router-dom';
 import Header from './components/header';
 import Video from './components/video';
-import Detail from './components/detail';
 import './css/app.scss';
 
-
+//import Detail from './components/detail';
+const Detail = lazy(()=>{return import('./components/detail')});
 
 function App(props) {
   const API = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -72,7 +72,9 @@ function App(props) {
       </Route>
 
       <Route path="/detail/:param/:chParam">
-        <Detail timeForToday={timeForToday} />
+        <Suspense fallback={<div>로딩중이에요</div>}>
+          <Detail timeForToday={timeForToday} />
+        </Suspense>
       </Route>
 
     </Switch>
