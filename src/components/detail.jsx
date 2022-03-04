@@ -76,7 +76,7 @@ function Detail(props) {
         return viewnumInfo
     }
 
-    let [more,setMore] = useState('false');
+    let [more,setMore] = useState(false);
 
     return (
         <div className='detail layout'>
